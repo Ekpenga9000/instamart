@@ -15,8 +15,9 @@ const Post = ({ caption, imageName, url, id, fetchPost }) => {
         }
     }
   return (
-    <Link to={`/post/${id}`} key={id} className="border block rounded-md w-full h-[30rem] md:h-[40rem] md:w-[30rem] my-8">
-      <div className="w-full h-[80%] bg-black">
+    // <Link to={`/post/${id}`} key={id} className="border block rounded-md w-full h-[30rem] md:h-[40rem] md:w-[30rem] my-8">
+    <Link to={`/post/${id}`} key={id} className="border">
+      <div className="w-full h-[20rem] bg-black">
         <img src={url} alt={imageName} className="h-full w-full object-contain"/>
       </div>
           <div className="p-4 bg-sky-950 h-[20%]">
