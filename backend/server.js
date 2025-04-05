@@ -101,9 +101,38 @@ app.get("/api/v1/posts", async (req, res) => {
   res.send(posts);
 });
 
+//Get a single post.
+app.get("/api/v1/posts/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await postModel.findById(id).populate("comments");
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    const getObjectParams = {
+      Bucket: bucketName,
+      Key: post.imageName,
+    };
+
+    const command = new GetObjectCommand(getObjectParams);
+    const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+
+    const newPost = {
+      ...post._doc,
+      url,
+    };
+    res.send(newPost);
+  } catch (error) {
+    console.error("Error fetching post:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 app.delete("/api/v1/posts/:id", async (req, res) => {
   const { id } = req.params;
- 
+
   try {
     const post = await postModel.findById({ _id: id });
     if (!post) {
