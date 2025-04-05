@@ -84,8 +84,8 @@ const HomePage = () => {
           </li>
         </ul>
       </div>
-      <div className="border col-span-3">
-        <h2 className="font-semibold text-center"> Today's Picks</h2>
+      <div className="col-span-3">
+        <h2 className="font-semibold text-center mb-4"> Today's Picks</h2>
         {!data.length ? (
           <p>No Posts yet.</p>
         ) : (

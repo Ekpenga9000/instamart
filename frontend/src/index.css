@@ -6,4 +6,8 @@
   @apply flex items-center gap-1;
 }
 
+.details_btn{
+  @apply bg-gray-300 text-gray-700 hover:text-gray-800 flex items-center py-2 px-6 rounded-[0.25rem]
+}
+
 
