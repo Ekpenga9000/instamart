@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { FaMapPin, FaMessage, FaShare, FaHeart } from "react-icons/fa6";
 import { MdOutlineMoreHoriz } from "react-icons/md";
+import broken from "../assets/borken.png";
 
 const PostDetails = () => {
   const { id } = useParams();
@@ -54,7 +55,7 @@ const PostDetails = () => {
           </li>
         </ul>
 
-        <ul className="flex items-center gap-6">
+        <ul className="flex items-center gap-6 mb-4">
           <li>
             <button className="details_btn first:py-1 first:gap-1">
               <FaMessage />
@@ -77,6 +78,39 @@ const PostDetails = () => {
             </button>
           </li>
         </ul>
+
+        <h3 className="font-semibold text-lg mb-4">Details</h3>
+        <ul className="flex item-center gap-3 mb-3">
+          <li className="font-semibold">Condition: </li>
+          <li>{post.condition || "Unknown"}</li>
+        </ul>
+        <p>
+          Experience classic gaming with this used Xbox 360 console, fully
+          tested and in great working condition. Whether you're revisiting
+          nostalgic favorites or introducing someone to timeless Xbox titles,
+          this console delivers smooth gameplay and entertainment value at a
+          great price.
+        </p>
+        <div className="border-t-2 mt-4 pt-3">
+          <h3 className="font-semibold text-lg mb-4">Seller's Information</h3>
+          <ul className="flex items-center gap-4">
+            <li>
+              <img
+                src={broken}
+                alt="Aina Zalati"
+                className="h-[3rem] w-[3rem] object-cover rounded-full"
+              />
+            </li>
+            <li>
+              <ul>
+                <li>
+                  <h4 className="font-bold">Aina Zalati</h4>
+                  <span>Reviews</span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   );
