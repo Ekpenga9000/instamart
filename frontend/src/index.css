@@ -1,34 +1,30 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 .nav_link {
   @apply flex items-center gap-1;
 }
 
-.details_btn{
-  @apply bg-gray-300 text-gray-700 hover:text-gray-800 flex items-center py-2 px-6 rounded-[0.25rem]
+.details_btn {
+  @apply bg-gray-300 text-gray-700 hover:text-gray-800 flex items-center py-2 px-6 rounded-[0.25rem];
 }
 
-.create-product-card{
+.create-product-card {
   @apply col-span-1 flex flex-col items-center justify-center text-center bg-white rounded-[0.25rem] border shadow-sm h-[15rem] px-2 cursor-pointer;
 }
 
-.create-product-card:hover{
+.create-product-card:hover > * {
   @apply text-blue-800;
 }
 
-.create-product-card >h3{
-  @apply font-semibold
+.create-product-card > h3 {
+  @apply font-semibold;
 }
-.create-product-card > p{
+.create-product-card > p {
   @apply text-gray-600 text-sm;
 }
 
-.create-product-card > p:hover{
-  @apply text-blue-800;
-}
-
-.create-img-div{
+.create-img-div {
   @apply bg-gray-200 p-2 rounded-full inline-block mb-3;
 }
