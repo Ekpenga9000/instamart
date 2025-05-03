@@ -28,3 +28,7 @@
 .create-img-div {
   @apply bg-gray-200 p-2 rounded-full inline-block mb-3;
 }
+
+.profile_link {
+  @apply flex items-center gap-1 hover:text-blue-700 cursor-pointer;
+}

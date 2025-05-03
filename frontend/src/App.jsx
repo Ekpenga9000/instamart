@@ -4,12 +4,13 @@ import HomePage from "./components/HomePage";
 import CreatePostPage from "./pages/CreateListing";
 import PostDetails from "./components/PostDetails";
 import Profile from "./components/Profile";
+import Authentication from "./pages/Authentication";
 
 function App() {
   return (
     <main>
       <BrowserRouter>
-          <Navbar />
+        <Navbar />
         <Routes>
           <Route path={"/"} element={<HomePage />} />
           <Route path={"/create"} element={<CreatePostPage />}>
@@ -20,7 +21,11 @@ function App() {
           </Route>
           <Route path={"/post/:id"} element={<PostDetails />} />
           <Route path={"/profile"} element={<Profile />} />
-         </Routes>
+          <Route path={"/auth"} element={<Authentication />}>
+            <Route path="login" element={<Authentication />} />
+            <Route path="reset" element={<Authentication />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </main>
   );

@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaOpencart, FaShop, FaPlus, FaUser } from "react-icons/fa6";
+import { FaOpencart, FaShop, FaPlus, FaUser, FaLock } from "react-icons/fa6";
+import useUser from "../hooks/useUser";
 
 function Navbar() {
+  const user = useUser();
   return (
     <header>
       <nav className="bg-sky-950 text-white flex items-center justify-between p-4">
@@ -27,10 +29,17 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-        <Link to={"/profile"} className="nav_link">
-          <FaUser />
-          Sample user
-        </Link>
+        {!user ? (
+          <Link to={"/auth/login"} className="nav_link">
+            <FaLock />
+            Login
+          </Link>
+        ) : (
+          <Link to={"/profile"} className="nav_link">
+            <FaUser />
+            {user.fullname}
+          </Link>
+        )}
       </nav>
     </header>
   );
