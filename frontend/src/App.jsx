@@ -24,6 +24,7 @@ function App() {
           <Route path={"/auth"} element={<Authentication />}>
             <Route path="login" element={<Authentication />} />
             <Route path="reset" element={<Authentication />} />
+            <Route path="register" element={<Authentication />} />
           </Route>
         </Routes>
       </BrowserRouter>

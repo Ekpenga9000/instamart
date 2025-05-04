@@ -29,12 +29,23 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-        {!user ? (
+
+        {/* Show the login option when the user is not logged in. */}
+        {/* Show the register button when on the login page . */}
+        {!user && location.pathname !== "/auth/login" && (
           <Link to={"/auth/login"} className="nav_link">
             <FaLock />
             Login
           </Link>
-        ) : (
+        )}
+        {!user && location.pathname === "/auth/login" && (
+          <Link to={"/auth/register"} className="nav_link">
+            <FaUser />
+            Create account
+          </Link>
+        )}
+
+        {user && (
           <Link to={"/profile"} className="nav_link">
             <FaUser />
             {user.fullname}
