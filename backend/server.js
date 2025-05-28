@@ -105,7 +105,7 @@ app.get("/api/v1/posts", async (req, res) => {
 app.get("/api/v1/posts/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const post = await postModel.findById(id).populate("comments");
+    const post = await postModel.findById(id);
 
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
