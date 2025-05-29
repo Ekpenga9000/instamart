@@ -1,15 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const listingSchema = new Schema(
+const BaseListingSchema = new Schema(
   {
     seller: { type: Schema.Types.ObjectId, ref: "User", required: true },
-    title: { type: String, required: true, trim: true },
     description: String,
     price: { type: Number, required: true, min: 0 },
     images: [String], // URLs (could also store GridFS IDs or S3 keys)
-    category: String, // or ref to a Category collection
-    // optional override location (if different from user)
     location: {
       street: String,
       city: String,
@@ -29,8 +26,75 @@ const listingSchema = new Schema(
   },
   {
     timestamps: true,
+    discriminatorKey: "__t",
   }
 );
 
-const Listing = mongoose.model("Listing", listingSchema);
-module.exports = Listing;
+const Listing = mongoose.model("Listing", BaseListingSchema);
+
+const VehicleSchema = new Schema({
+  vehicleType: {
+    type: String,
+    enum: [
+      "car/van",
+      "motorcycle",
+      "power sport",
+      "trailer",
+      "motorhome/caravan",
+      "boat",
+      "other",
+    ],
+  },
+  make: {
+    type: String,
+    required: true,
+  },
+  model: {
+    type: String,
+    required: true,
+  },
+  year: {
+    type: Number,
+    required: true,
+  },
+  mileage: Number,
+  bodyStyle: {
+    type: String,
+    enum: [
+      "Sedan",
+      "Saloon",
+      "Hatchback",
+      "Wagon",
+      "Coupe",
+      "Convertible",
+      "SUV",
+      "Truck",
+      "Van",
+      "Motorcycle",
+      "Trailer",
+      "Motorhome",
+      "other",
+    ],
+  },
+  color: String,
+  condition: {
+    type: String,
+    enum: ["excellent", "good", "fair", "poor"],
+  },
+  transmission: {
+    type: String,
+    enum: ["automatic", "manual"],
+  },
+  feulType: {
+    type: String,
+    enum: [
+      "petrol/gasoline",
+      "diesel",
+      "electric",
+      "hybrid",
+      "flex",
+      "plug-in hybrid",
+      "other",
+    ],
+  },
+});

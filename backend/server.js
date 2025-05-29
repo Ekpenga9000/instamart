@@ -1,5 +1,5 @@
 const express = require("express");
-const dotenv = require("dotenv");
+require("dotenv").config();
 const connectToDB = require("./db/db.config");
 const postModel = require("./models/post.model");
 const multer = require("multer");
@@ -17,7 +17,14 @@ const crypto = require("crypto");
 
 const app = express();
 app.use(cors());
-dotenv.config();
+
+// Things to do:
+// 1. Move the logic to the lisitng controller
+// 2. Ensure that the user can also post a profile picture using the same bucket and call the url. All this in the user controller.
+// 3. Create a controller for the messages.
+// 4. Create a controller for the conversations.
+
+// I will emphasize functionality over looks.
 
 const randomImageName = (bytes = 32) =>
   crypto.randomBytes(bytes).toString("hex");
